@@ -1,0 +1,27 @@
+.myclass-header {
+    height: 20%;
+    max-height: 20vh;
+
+    display: flex;
+    flex-direction: row;
+
+    border-bottom: 1px ridge #b2b2b2;
+
+    --myclass-header-blocks-padding: 1rem;
+}
+
+.myclass-img-div {
+    padding: var(--myclass-header-blocks-padding);
+}
+
+.myclass-img-div .myclass-img {
+    width: 130px;
+}
+
+.myclass-main {
+    padding: var(--myclass-header-blocks-padding);
+}
+
+.myclass-main .myclass-creator {
+    font-size: 0.8rem;
+}

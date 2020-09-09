@@ -1,0 +1,12 @@
+:root {
+    --myclass-padding: 1rem;
+}
+
+.MyClass {
+    display: flex;
+    flex-direction: column;
+    padding: var(--myclass-padding);
+    min-height: calc(100vh - calc(2*var(--myclass-padding)));
+    width: 100%;
+    position: relative;
+}
