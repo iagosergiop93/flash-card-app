@@ -5,4 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Colors */
+  --light-gray: #f3f3f3;
+  --gray: #e8e8e8;
+  --blue1: #5588a3;
+  --blue2: #145374;
+  --blue3: #00334e;
 }

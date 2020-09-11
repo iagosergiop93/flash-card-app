@@ -6,7 +6,7 @@ export class MyClassHeader extends React.Component {
         return (
             <header className="myclass-header">
                 <div className="myclass-img-div">
-                    <img src={process.env.PUBLIC_URL + '/computer.jpg'} className="myclass-img" />
+                    <img src={process.env.PUBLIC_URL + '/assets/computer.jpg'} className="myclass-img" />
                 </div>
                 
                 <div className="myclass-main">

@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: row;
 
-    border-bottom: 1px ridge #b2b2b2;
+    border-bottom: 1px ridge var(--gray);
 
     --myclass-header-blocks-padding: 1rem;
 }

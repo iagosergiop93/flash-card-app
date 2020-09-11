@@ -1,0 +1,92 @@
+.deck-row {
+    padding: 1rem 1rem 0.5rem 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid var(--gray);
+}
+
+.deck-row:hover {
+    background: var(--light-gray);
+    cursor: pointer;
+}
+
+.deck-row-item {
+    margin: 0.5rem 2rem;
+}
+
+.deck-row .deck-checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--blue1);
+    position: relative;
+}
+
+.deck-row .deck-checkbox img {
+    width: 100%;
+}
+
+.deck-row span.deck-row-item {
+    margin-top: 1rem;
+}
+
+.deck-row .deck-round-bar {
+    width: 35%;
+    min-width: 25rem;
+    height: 1.8rem;
+    
+    border-radius: 1.2rem;
+    border: 1px solid var(--blue1);
+    background: var(--blue1);
+    
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+
+    position: relative;
+    padding-top: 0.7rem;
+    margin-top: 0;
+}
+
+.deck-row .deck-round-bar .icon-box {
+    position: absolute;
+    left: 1rem;
+    top: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: #fff;
+}
+
+.deck-row .deck-round-bar .icon-box img {
+    width: 70%;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.deck-row .reorder-deck {
+    position: relative;
+}
+
+.deck-row .reorder-deck {
+    margin-top: 0.5rem;
+}
+
+.deck-row .reorder-deck img {
+    height: 1.5rem;
+}
+
+.deck-row .reorder-deck span {
+    display: inline-block;
+    position: absolute;
+    top: 0.5rem;
+    left: 2.25rem;
+    color: var(--blue1);
+}
+
+.deck-row .reorder-deck span:hover {
+    border-bottom: 1px solid var(--blue1);
+    cursor: pointer;
+}
