@@ -25,7 +25,9 @@ export class MyClassMain extends React.Component {
         return (
             <main className="MyClass-main">
                 <Router>
-                    {links}
+                    <div className="tabs-container">
+                        {links}
+                    </div>
                     <Switch>
                         <Route exact path="/">
                             <Decks />
