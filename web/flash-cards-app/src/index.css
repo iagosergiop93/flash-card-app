@@ -9,7 +9,10 @@ body {
   /* Colors */
   --light-gray: #f3f3f3;
   --gray: #e8e8e8;
-  --blue1: #5588a3;
+  --blue1: #33A0D5;
   --blue2: #145374;
   --blue3: #00334e;
+
+  --light-blue-grad: #7DCCF3;
+  --strong-blue-grad: #2FAEED;
 }

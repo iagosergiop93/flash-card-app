@@ -1,39 +1,20 @@
-.deck-row {
+.deck-header {
     padding: 1rem 1rem 0.5rem 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     border-bottom: 1px solid var(--gray);
+    display: grid;
+    grid-template-columns: 4fr 8fr 4fr; /* 16fr */
 }
 
-.deck-row:hover {
-    background: var(--light-gray);
-    cursor: pointer;
+.deck-header .decks {
+    align-self: center;
+    margin-left: 30%;
+    font-weight: bold;
 }
 
-.deck-row-item {
-    margin: 0.5rem 2rem;
-}
+/*---------------------------------------*/
 
-.deck-row .deck-checkbox {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    border: 1px solid var(--blue1);
-    position: relative;
-}
-
-.deck-row .deck-checkbox img {
-    width: 100%;
-}
-
-.deck-row span.deck-row-item {
-    margin-top: 1rem;
-}
-
-.deck-row .deck-round-bar {
-    width: 35%;
-    min-width: 25rem;
+.deck-header .deck-round-bar {
+    max-width: 80%;
     height: 1.8rem;
     
     border-radius: 1.2rem;
@@ -45,11 +26,11 @@
     font-weight: bold;
 
     position: relative;
-    padding-top: 0.7rem;
-    margin-top: 0;
+    padding-top: 0.75rem;
+    align-self: start;
 }
 
-.deck-row .deck-round-bar .icon-box {
+.deck-header .deck-round-bar .icon-box {
     position: absolute;
     left: 1rem;
     top: 0.5rem;
@@ -60,33 +41,26 @@
     background: #fff;
 }
 
-.deck-row .deck-round-bar .icon-box img {
+.deck-header .deck-round-bar .icon-box img {
     width: 70%;
     padding: 0.25rem;
     cursor: pointer;
 }
 
-.deck-row .reorder-deck {
-    position: relative;
+/*---------------------------------------*/
+.study-btn  {
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, var(--light-blue-grad), var(--strong-blue-grad));
+    color: #fff;
+    font-weight: bold;
+    height: 2rem;
+    max-width: 8rem;
 }
 
-.deck-row .reorder-deck {
-    margin-top: 0.5rem;
-}
-
-.deck-row .reorder-deck img {
-    height: 1.5rem;
-}
-
-.deck-row .reorder-deck span {
-    display: inline-block;
-    position: absolute;
-    top: 0.5rem;
-    left: 2.25rem;
-    color: var(--blue1);
-}
-
-.deck-row .reorder-deck span:hover {
-    border-bottom: 1px solid var(--blue1);
+.study-btn:hover {
     cursor: pointer;
+    background: #fff;
+    color: var(--strong-blue-grad);
+    border: 1px solid var(--strong-blue-grad);
 }
