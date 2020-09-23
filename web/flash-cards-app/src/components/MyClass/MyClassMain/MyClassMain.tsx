@@ -8,9 +8,9 @@ import { Learners } from './Learners/Learners';
 export class MyClassMain extends React.Component {
     render() {
         const elements = [
-            { name: 'About', link: '/about' },
-            { name: 'Decks', link: '/decks' },
-            { name: 'Learners', link: '/learners' },
+            { name: 'About', link: '/dashboard/about' },
+            { name: 'Decks', link: '/dashboard/decks' },
+            { name: 'Learners', link: '/dashboard/learners' },
         ]
         const links = [];
 
@@ -29,16 +29,16 @@ export class MyClassMain extends React.Component {
                         {links}
                     </div>
                     <Switch>
-                        <Route exact path="/">
+                        <Route exact path="/dashboard">
                             <Decks />
                         </Route>
-                        <Route path="/about">
+                        <Route path="/dashboard/about">
                             <About />
                         </Route>
-                        <Route path="/decks">
+                        <Route path="/dashboard/decks">
                             <Decks />
                         </Route>
-                        <Route path="/learners">
+                        <Route path="/dashboard/learners">
                             <Learners />
                         </Route>
                     </Switch>
