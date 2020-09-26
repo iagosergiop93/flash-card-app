@@ -1,0 +1,26 @@
+.login-container {
+	position: relative;
+	top: 3rem;
+	margin: 0 auto;
+    margin-bottom: 3rem;
+	padding: 2rem 3rem;
+
+	width: 35rem;
+	max-width: 95%;
+
+	border-radius: 7px;
+	border: 2px solid rgba(200,200,200,0.5);
+}
+
+.title {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
+
+.button-container {
+	width: 60%;
+	margin: 0 auto;
+}
