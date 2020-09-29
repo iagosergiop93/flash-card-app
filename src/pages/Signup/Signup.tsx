@@ -39,19 +39,19 @@ export class Signup extends React.Component<any, any> {
                 <span className="title">Sign up</span>
                 <Form layout="vertical">
                     <Form.Item label="First Name">
-                        <Input placeholder="First Name" name="firstName" onChange={this.handleChange} />
+                        <Input name="firstName" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item label="Last Name">
-                        <Input placeholder="Last Name" name="lastName" onChange={this.handleChange} />
+                        <Input name="lastName" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item label="Email">
-                        <Input placeholder="Email" name="email" onChange={this.handleChange} />
+                        <Input name="email" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item label="Username">
-                        <Input placeholder="username" name="username" onChange={this.handleChange} />
+                        <Input name="username" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item label="Password">
-                        <Input placeholder="password" name="passwd" onChange={this.handleChange} type="password" />
+                        <Input name="passwd" onChange={this.handleChange} type="password" />
                     </Form.Item>
                     <Form.Item className="button-container">
                         <Button type="primary" size="middle" onClick={this.handleSubmit} block>Submit</Button>
