@@ -36,10 +36,10 @@ export class Login extends React.Component<any, any> {
                 <span className="title">Sign in</span>
                 <Form layout="vertical">
                     <Form.Item label="Username">
-                        <Input placeholder="username" name="username" onChange={this.handleChange} />
+                        <Input name="username" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item label="Password">
-                        <Input placeholder="password" name="passwd" onChange={this.handleChange} />
+                        <Input name="passwd" onChange={this.handleChange} />
                     </Form.Item>
                     <Form.Item className="button-container">
                         <Button type="primary" size="middle" onClick={this.handleSubmit} block>Submit</Button>
