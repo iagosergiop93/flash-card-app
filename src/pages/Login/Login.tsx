@@ -1,6 +1,7 @@
 import { Form, Input, Button } from 'antd';
 import './Login.css';
 import React from 'react';
+import { validatePasswd, validateUsername } from '../../utils/validateFields';
 
 export class Login extends React.Component<any, any> {
 
@@ -26,8 +27,15 @@ export class Login extends React.Component<any, any> {
     }
 
     handleSubmit() {
-        console.log('username', this.state.username);
-        console.log('passwd', this.state.passwd);
+
+        try {
+            validateUsername(this.state.username);
+            validatePasswd(this.state.passwd);
+
+        } catch (err) {
+            console.log(err);
+        }
+
     }
 
     render() {
