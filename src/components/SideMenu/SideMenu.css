@@ -1,0 +1,22 @@
+.SideMenu {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    max-width: 500px;
+    min-width: 300px;
+    height: calc(100vh - 2rem);
+    padding: 1rem;
+    border-right: 1px solid var(--gray);
+}
+
+.SideMenu-header {
+    height: 200px;
+}
+
+.SideMenu-main {
+    height: 200px;
+}
+
+.SideMenu-footer {
+    height: 200px;
+}
