@@ -1,5 +1,5 @@
 import { Principal } from "../entities/Principal";
-import { TOKEN } from "../resources/environment";
+import { TOKEN } from "../environments/environment";
 
 export class TokenService {
 
@@ -30,6 +30,10 @@ export class TokenService {
 			localStorage.removeItem(TOKEN.name);
 			sessionStorage.removeItem(TOKEN.userInfo);
 		}
+	}
+
+	Factory() {
+		return new TokenService();
 	}
 
 }

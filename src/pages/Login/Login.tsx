@@ -2,10 +2,15 @@ import { Form, Input, Button } from 'antd';
 import './Login.css';
 import React from 'react';
 import { validatePasswd, validateUsername } from '../../utils/validateFields';
+import { UserService } from '../../services/userService';
 
-export class Login extends React.Component<any, any> {
+type LoginProps = {
+    userService: UserService
+}
 
-    constructor(props: any) {
+export class Login extends React.Component<LoginProps, any> {
+
+    constructor(props: LoginProps) {
         super(props);
         this.state = {
             username: "",
@@ -22,20 +27,18 @@ export class Login extends React.Component<any, any> {
         const value = target.value;
         
         this.setState(() => ({ [name]: value }));
-
-        console.log(name, value);
     }
 
     handleSubmit() {
-
         try {
             validateUsername(this.state.username);
             validatePasswd(this.state.passwd);
+            this.props.userService.login(this.state.username, this.state.passwd)
+                .then()
 
         } catch (err) {
             console.log(err);
         }
-
     }
 
     render() {
