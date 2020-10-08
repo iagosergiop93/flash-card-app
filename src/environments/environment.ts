@@ -7,5 +7,5 @@ export const TOKEN = {
 }
 
 export const axiosConfig: AxiosRequestConfig = {
-    baseURL: "http://localhost:4201",
+    baseURL: "http://localhost:8080",
 }

@@ -1,4 +1,5 @@
 import { AxiosInstance, AxiosResponse } from "axios";
+import { User } from "../entities/User";
 import { axiosService } from "./axiosService";
 import { TokenService } from "./tokenService";
 
@@ -18,14 +19,33 @@ export class UserService {
     
     login(username: string, passwd: string): Promise<AxiosResponse> {
         const payload = { username, passwd };
-        return this.axios.post("/users/auth", payload)
+        return this.axios.post("/users/login", payload)
             .then(res => {
+                console.log(res);
                 this.saveLoginInfo(res);
                 return res;
+            })
+            .catch(err => {
+                console.log(err);
+                return err; 
             });
     }
 
-    saveLoginInfo(res: AxiosResponse): AxiosResponse {
+    createUser(user: User): Promise<AxiosResponse> {
+        const payload = user;
+        return this.axios.post("/users/user", payload)
+            .then(res => {
+                console.log(res);
+                this.saveLoginInfo(res);
+                return res;
+            })
+            .catch(err => {
+                console.log(err);
+                return err; 
+            });
+    }
+
+    private saveLoginInfo(res: AxiosResponse): AxiosResponse {
         // Save token
 		const token = res.headers['Authorization'];
 		this.tokenService.saveToken(token);

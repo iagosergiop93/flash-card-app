@@ -7,8 +7,10 @@ import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Login } from './pages/Login/Login';
 import { Header } from './components/Header/Header';
 import { Signup } from './pages/Signup/Signup';
+import { UserService } from './services/userService';
 
 function App() {
+  const userService = UserService.prototype.Factory();
 
   return (
     <div className="App">
@@ -16,11 +18,11 @@ function App() {
       <Router>
         
         <Route exact path="/signin">
-          <Login />
+          <Login userService={userService} />
         </Route>
 
         <Route exact path="/signup">
-          <Signup />
+          <Signup userService={userService} />
         </Route>
 
         <Route exact path="/dashboard" 
