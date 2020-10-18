@@ -2,7 +2,6 @@ import React from 'react';
 import './Decks.css';
 import { Deck } from '../../../../entities/Deck';
 import { DeckComponent } from './DeckComponent/DeckComponent';
-import { shuffle } from '../../../../utils/shuffleArray';
 
 type DecksProps = {
     className?: string
@@ -92,9 +91,6 @@ export class Decks extends React.Component<DecksProps,DecksState> {
                 <div className="deck-header">
                     <span className="decks">Decks</span>
                     <div className="deck-round-bar deck-row-item">
-                        <div className="icon-box">
-                            <img src={process.env.PUBLIC_URL + '/assets/icons/play.png'} />
-                        </div>
                         Study { 
                                 this.state.deckSelectedCounter > 0 ? 
                                     (this.state.deckSelectedCounter + 

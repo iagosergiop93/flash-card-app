@@ -10,7 +10,7 @@ import { Signup } from './pages/Signup/Signup';
 import { UserService } from './services/userService';
 
 function App() {
-  const userService = UserService.prototype.Factory();
+  const userService = UserService.Factory();
 
   return (
     <div className="App">

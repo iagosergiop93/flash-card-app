@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageHeader, Button } from 'antd';
+import { UserService } from '../../services/userService';
 
 type HeaderProps = {
     title: string
@@ -7,10 +8,12 @@ type HeaderProps = {
 
 export function Header(props: HeaderProps) {
 
+    const userService = UserService.Factory();
+
     const buttons = [
         <Button>Button 1</Button>,
         <Button>Button 2</Button>,
-        <Button>Button 3</Button>
+        <Button onClick={userService.logout}>Logout</Button>
     ];
 
     return (

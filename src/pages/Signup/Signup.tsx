@@ -5,6 +5,7 @@ import { OverlaySpin } from '../../components/OverlaySpin/OverlaySpin';
 import { validateUser } from '../../utils/validateFields';
 import { UserService } from '../../services/userService';
 import { User } from '../../entities/User';
+import { BrowserNavigator } from '../../utils/navigators/browserNavigator';
 
 type SignupProps = {
     userService: UserService
@@ -41,8 +42,8 @@ export class Signup extends React.Component<SignupProps, any> {
             const user: User = this.createUserFromState();
             this.props.userService.createUser(user)
                 .then(res => {
-                    console.log(res);
                     this.setState({ loading: false });
+                    BrowserNavigator.prototype.navigateTo('/dashboard');
                 })
         } catch (err) {
             console.log(err);

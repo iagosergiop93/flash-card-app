@@ -10,7 +10,7 @@ export function axiosService(): AxiosInstance {
 }
 
 function createAxiosInstance(): AxiosInstance {
-    const tokenService = TokenService.prototype.Factory();
+    const tokenService = TokenService.Factory();
     const authIntCallback = authInterceptor(tokenService);
     
     axios = Axios.create(axiosConfig);

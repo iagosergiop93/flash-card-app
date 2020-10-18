@@ -19,11 +19,12 @@
 }
 
 .deck-row .deck-checkbox img {
-    width: 100%;
+    width: 1rem;
+    vertical-align: top;
 }
 
 .deck-row span.deck-row-item {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 /*---------------------------------------*/

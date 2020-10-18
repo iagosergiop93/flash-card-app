@@ -32,7 +32,7 @@ export class TokenService {
 		}
 	}
 
-	Factory() {
+	static Factory() {
 		return new TokenService();
 	}
 

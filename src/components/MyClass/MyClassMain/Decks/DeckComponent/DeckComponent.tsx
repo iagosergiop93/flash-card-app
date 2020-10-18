@@ -9,10 +9,6 @@ type DeckProps = {
 
 export class DeckComponent extends React.Component<DeckProps> {
     
-    constructor(props: any) {
-        super(props);
-    }
-
     clickedCheckbox() {
         this.props.onCheckboxChange(this.props.deck);
     }

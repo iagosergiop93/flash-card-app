@@ -1,5 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 
+export const DOMAIN = "http://localhost:3000";
+
 export const TOKEN = {
     scheme: "Bearer",
     name: "f-token",

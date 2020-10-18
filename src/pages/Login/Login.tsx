@@ -1,9 +1,10 @@
 import React from 'react';
 import './Login.css';
-import { Form, Input, Button, Space, Spin } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { validatePasswd, validateUsername } from '../../utils/validateFields';
 import { UserService } from '../../services/userService';
 import { OverlaySpin } from '../../components/OverlaySpin/OverlaySpin';
+import { BrowserNavigator } from '../../utils/navigators/browserNavigator';
 
 type LoginProps = {
     userService: UserService
@@ -23,6 +24,12 @@ export class Login extends React.Component<LoginProps, any> {
         this.handleSubmit= this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        if(this.props.userService.isUserLoggedIn()) {
+            BrowserNavigator.prototype.navigateTo('/dashboard');
+        }
+    }
+
     handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const target = event.target;
         const name = target.name;
@@ -39,6 +46,7 @@ export class Login extends React.Component<LoginProps, any> {
             this.props.userService.login(this.state.username, this.state.passwd)
                 .then(res => {
                     this.setState({ loading: false });
+                    BrowserNavigator.prototype.navigateTo('/dashboard');
                 })
 
         } catch (err) {
