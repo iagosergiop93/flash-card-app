@@ -25,10 +25,8 @@ function App() {
           <Signup userService={userService} />
         </Route>
 
-        <Route exact path="/dashboard" 
-          render={props => (
-            <Dashboard />
-          )}>
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
 
       </Router>

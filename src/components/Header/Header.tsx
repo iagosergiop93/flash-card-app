@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Header.css";
 import { PageHeader, Button } from 'antd';
 import { UserService } from '../../services/userService';
 
@@ -17,11 +18,6 @@ export function Header(props: HeaderProps) {
     ];
 
     return (
-        <PageHeader
-          title={props.title}
-          extra={buttons}
-          >
-
-        </PageHeader>
+        <PageHeader title={props.title} extra={buttons} className="pageheader"></PageHeader>
     );
 }
