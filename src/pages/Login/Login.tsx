@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { Form, Input, Button } from 'antd';
 import { validatePasswd, validateUsername } from '../../utils/validateFields';
@@ -10,70 +10,69 @@ type LoginProps = {
     userService: UserService
 }
 
-export class Login extends React.Component<LoginProps, any> {
+export function Login(props: LoginProps) {
 
-    constructor(props: LoginProps) {
-        super(props);
-        this.state = {
-            username: "",
-            passwd: "",
-            loading: false
-        }
+    const [username, setUsername] = useState('');
+    const [passwd, setPasswd] = useState('');
+    const [loading, setLoading] = useState(false);
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit= this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        if(this.props.userService.isUserLoggedIn()) {
+    useEffect(() => {
+        if(props.userService.isUserLoggedIn()) {
             BrowserNavigator.prototype.navigateTo('/dashboard');
         }
-    }
+    });
 
-    handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target;
         const name = target.name;
         const value = target.value;
-        
-        this.setState(() => ({ [name]: value }));
+
+        switch(name) {
+            case 'username':
+                setUsername(value);
+                break;
+            case 'passwd':
+                setPasswd(value);
+                break;
+        }
     }
 
-    handleSubmit() {
-        this.setState({ loading: true});
+    const handleSubmit = () => {
+        setLoading(true);
         try {
-            validateUsername(this.state.username);
-            validatePasswd(this.state.passwd);
-            this.props.userService.login(this.state.username, this.state.passwd)
+            validateUsername(username);
+            validatePasswd(passwd);
+            props.userService.login(username, passwd)
                 .then(res => {
-                    this.setState({ loading: false });
-                    BrowserNavigator.prototype.navigateTo('/dashboard');
+                    setLoading(false);
+                    if(res.status > 200 && res.status < 300) {
+                        BrowserNavigator.prototype.navigateTo('/dashboard');
+                    }
                 })
 
         } catch (err) {
             console.log(err);
-            this.setState({ loading: false });
+            setLoading(false);
         }
     }
 
-    render() {
-        return (
-            <div className="login-container">
-                <span className="title">Sign in</span>
-                <Form layout="vertical">
-                    <Form.Item label="Username">
-                        <Input name="username" onChange={this.handleChange} />
-                    </Form.Item>
-                    <Form.Item label="Password">
-                        <Input name="passwd" type="password" onChange={this.handleChange} />
-                    </Form.Item>
-                    <Form.Item className="button-container">
-                        <Button type="primary" size="middle" onClick={this.handleSubmit} block>Submit</Button>
-                    </Form.Item>
-                </Form>
-                { this.state.loading ? <OverlaySpin /> : undefined }
-                
-            </div>
-        );
-    }
+    return (
+        <div className="login-container">
+            <span className="title">Sign in</span>
+            <Form layout="vertical">
+                <Form.Item label="Username">
+                    <Input name="username" onChange={handleChange} />
+                </Form.Item>
+                <Form.Item label="Password">
+                    <Input name="passwd" type="password" onChange={handleChange} />
+                </Form.Item>
+                <Form.Item className="button-container">
+                    <Button type="primary" size="middle" onClick={handleSubmit} block>Submit</Button>
+                </Form.Item>
+            </Form>
+            { loading ? <OverlaySpin /> : undefined }
+            
+        </div>
+    );
 
 }
