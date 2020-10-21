@@ -22,19 +22,10 @@ export function Login(props: LoginProps) {
         }
     });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, setter: any) => {
         const target = event.target;
-        const name = target.name;
         const value = target.value;
-
-        switch(name) {
-            case 'username':
-                setUsername(value);
-                break;
-            case 'passwd':
-                setPasswd(value);
-                break;
-        }
+        setter(value);
     }
 
     const handleSubmit = () => {
@@ -61,10 +52,10 @@ export function Login(props: LoginProps) {
             <span className="title">Sign in</span>
             <Form layout="vertical">
                 <Form.Item label="Username">
-                    <Input name="username" onChange={handleChange} />
+                    <Input name="username" onChange={(e) => handleChange(e, setUsername)} />
                 </Form.Item>
                 <Form.Item label="Password">
-                    <Input name="passwd" type="password" onChange={handleChange} />
+                    <Input name="passwd" type="password" onChange={(e) => handleChange(e, setPasswd)} />
                 </Form.Item>
                 <Form.Item className="button-container">
                     <Button type="primary" size="middle" onClick={handleSubmit} block>Submit</Button>

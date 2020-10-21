@@ -9,7 +9,7 @@ import { Home } from './Home/Home';
 
 export function Dashboard() {
 
-    let { path, url } = useRouteMatch();
+    let { path } = useRouteMatch();
 
     return (
         <div className="Dashboard">

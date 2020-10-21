@@ -1,6 +1,6 @@
 import React from 'react';
 import './Decks.css';
-import { Deck } from '../../../../entities/Deck';
+import { Deck } from '../../../entities/Deck';
 import { DeckComponent } from './DeckComponent/DeckComponent';
 
 type DecksProps = {

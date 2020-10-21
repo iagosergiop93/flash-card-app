@@ -12,9 +12,9 @@ export function Header(props: HeaderProps) {
     const userService = UserService.Factory();
 
     const buttons = [
-        <Button>Button 1</Button>,
-        <Button>Button 2</Button>,
-        <Button onClick={userService.logout}>Logout</Button>
+        <Button key="1">Button 1</Button>,
+        <Button key="2">Button 2</Button>,
+        <Button key="3" onClick={userService.logout}>Logout</Button>
     ];
 
     return (

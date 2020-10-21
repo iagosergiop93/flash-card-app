@@ -1,6 +1,6 @@
 import { Form, Input, Button } from 'antd';
 import './Signup.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { OverlaySpin } from '../../components/OverlaySpin/OverlaySpin';
 import { validateUser } from '../../utils/validateFields';
 import { UserService } from '../../services/userService';
@@ -11,86 +11,77 @@ type SignupProps = {
     userService: UserService
 }
 
-export class Signup extends React.Component<SignupProps, any> {
+export function Signup(props: SignupProps) {
+    
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [passwd, setPasswd] = useState('');
+    const [loading, setLoading] = useState(false);
+    
 
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
-            username: "",
-            passwd: "",
-            loading: false
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit= this.handleSubmit.bind(this);
-    }
-
-    handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, setter: any) => {
         const target = event.target;
-        const name = target.name;
         const value = target.value;
-        
-        this.setState(() => ({ [name]: value }));
+        setter(value);
     }
 
-    handleSubmit() {
-        this.setState({ loading: true});
+    const handleSubmit = () => {
+        setLoading(true);
         try {
-            const user: User = this.createUserFromState();
-            this.props.userService.createUser(user)
+            const user: User = createUserFromState();
+            props.userService.createUser(user)
                 .then(res => {
-                    this.setState({ loading: false });
-                    BrowserNavigator.prototype.navigateTo('/dashboard');
+                    setLoading(false);
+                    if(res.status > 200 && res.status < 300) {
+                        BrowserNavigator.prototype.navigateTo('/dashboard');
+                    }
                 })
         } catch (err) {
             console.log(err);
-            this.setState({ loading: false });
+            setLoading(false);
         }
     }
 
-    createUserFromState(): User {
+    const createUserFromState = () => {
         let user: User = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            username: this.state.username,
-            passwd: this.state.passwd,
-            email: this.state.email
+            firstName,
+            lastName,
+            username,
+            passwd,
+            email
         };
         validateUser(user);
 
         return user;
     }
 
-    render() {
-        return (
-            <div className="login-container">
-                <span className="title">Sign up</span>
-                <Form layout="vertical">
-                    <Form.Item label="First Name">
-                        <Input name="firstName" onChange={this.handleChange} />
-                    </Form.Item>
-                    <Form.Item label="Last Name">
-                        <Input name="lastName" onChange={this.handleChange} />
-                    </Form.Item>
-                    <Form.Item label="Email">
-                        <Input name="email" onChange={this.handleChange} />
-                    </Form.Item>
-                    <Form.Item label="Username">
-                        <Input name="username" onChange={this.handleChange} />
-                    </Form.Item>
-                    <Form.Item label="Password">
-                        <Input name="passwd" type="password" onChange={this.handleChange} />
-                    </Form.Item>
-                    <Form.Item className="button-container">
-                        <Button type="primary" size="middle" onClick={this.handleSubmit} block>Submit</Button>
-                    </Form.Item>
-                </Form>
-                { this.state.loading ? <OverlaySpin /> : undefined }
-            </div>
-        );
-    }
+    return (
+        <div className="login-container">
+            <span className="title">Sign up</span>
+            <Form layout="vertical">
+                <Form.Item label="First Name">
+                    <Input name="firstName" onChange={(e) => handleChange(e, setFirstName)} />
+                </Form.Item>
+                <Form.Item label="Last Name">
+                    <Input name="lastName" onChange={(e) => handleChange(e, setLastName)} />
+                </Form.Item>
+                <Form.Item label="Email">
+                    <Input name="email" onChange={(e) => handleChange(e, setEmail)} />
+                </Form.Item>
+                <Form.Item label="Username">
+                    <Input name="username" onChange={(e) => handleChange(e, setUsername)} />
+                </Form.Item>
+                <Form.Item label="Password">
+                    <Input name="passwd" type="password" onChange={(e) => handleChange(e, setPasswd)} />
+                </Form.Item>
+                <Form.Item className="button-container">
+                    <Button type="primary" size="middle" onClick={handleSubmit} block>Submit</Button>
+                </Form.Item>
+            </Form>
+            { loading ? <OverlaySpin /> : undefined }
+        </div>
+    );
 
 }
